@@ -18,3 +18,16 @@ with open('recipes.txt', 'r', encoding='utf-8') as f:
         cook_book.update(dish)
     print('cook_book: =')
     pprint(cook_book)
+
+
+def get_shop_list_by_dishes(dishes, person_count):
+    shop_list = {}
+    for dish in dishes:
+        for ingridient in cook_book[dish]:
+            if ingridient['ingredient_name'] in shop_list:
+                shop_list[ingridient['ingredient_name']]['quantity'] += int(ingridient['quantity']) * person_count
+            else:
+                shop_list.update({ingridient['ingredient_name']: {'measure': ingridient['measure'], 'quantity': int(ingridient['quantity']) * person_count}})
+    return shop_list
+
+pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
