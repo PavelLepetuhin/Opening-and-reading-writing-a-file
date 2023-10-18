@@ -17,7 +17,7 @@ with open('recipes.txt', 'r', encoding='utf-8') as f:
         line_2 = f.readline()
         cook_book.update(dish)
     print('cook_book: =')
-    pprint(cook_book)
+    pprint(cook_book, width=120)
 
 
 def get_shop_list_by_dishes(dishes, person_count):
@@ -30,4 +30,5 @@ def get_shop_list_by_dishes(dishes, person_count):
                 shop_list.update({ingridient['ingredient_name']: {'measure': ingridient['measure'], 'quantity': int(ingridient['quantity']) * person_count}})
     return shop_list
 
+print()
 pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
